@@ -1,0 +1,1 @@
+Put script in input, after program runs, check output for comments

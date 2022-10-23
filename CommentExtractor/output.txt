@@ -1,0 +1,28 @@
+## Nicholas Norman Oct/2022 ##
+## Budget ##
+#import date and time
+    #converts category csv to list
+        #assign each line to list
+    #prints all fields
+            #list all categories
+            #ask to edit a category, or add new one
+                #to edit,
+                #change name, or price, or reset spent
+                #ask for new category, then new price, then spent
+            #save file
+#Start
+#Setup mode
+#when not in setup mode
+    #print all categories
+    #input: category and price
+        #add category spent + new price
+        #add to list of log files
+        #exit loop
+#save to category file
+#save to log file w/date
+#end program
+##pull spenditures from texts
+##auto run program
+##send emails about over under budgets
+##email.sms
+##floats
