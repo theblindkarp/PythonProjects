@@ -11,7 +11,10 @@ while keepGoing:
     lastName = nameList[len(nameList) - 1]
     nameList.remove(nameList[len(nameList) - 1])
     nameListJoin = ", ".join(nameList)
-    print("{} and {} have a {}% chance of love".format(nameListJoin, lastName, percent))
+    if nameNum <= 1:
+        print("{} have a {}% chance of love".format(nameListJoin, percent))
+    else:
+        print("{} and {} have a {}% chance of love".format(nameListJoin, lastName, percent))
     dummy = input("press 7 to exit: ")
     if dummy == "7":
         keepGoing = False
