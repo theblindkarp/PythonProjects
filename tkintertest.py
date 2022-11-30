@@ -2,48 +2,38 @@ from tkinter import *
 
 #window setup
 root = Tk()
-root.title("Test Application")
-root.iconbitmap(r"./lols.ico")
-
-
+root.title("Width and Length")
 
 #function for button
 def ButtonPress():
-    print("button pressed")
-    myLabel = Label(root, text = entry.get())
-    myLabel.grid(row = 0, column = 0)
+    width = int(entry.get())
+    length = int(entry2.get())
+    
+    row = "_" * width
+    column = ("|" + " " * (width) + "|\n") * length
+    rectangle = f"{row}\n{column}{row}"
+
+    top = Toplevel()
+    top.title("Rectangle")
+
+    myLabel = Label(top, text = rectangle)
+    myLabel.grid(row = 10, column = 0, columnspan = 2)
+
 
 #entry (input field) widget
-entry = Entry(root, width = 50, borderwidth = 12)
-entry.insert(0, "Enter Your Name")
+entry = Entry(root, width = 25)
+entry2 = Entry(root, width = 25)
+entry.insert(0, "Enter Width")
+entry2.insert(0, "Enter Length")
 
 #label widget for root
-myLabel = Label(root, text = "Name")
-#gridLabel = Label(root, text = "This is useing the grid system")
-#testLabel = Label(root, text = "What row is this?")
-
-#button creation
-#disabled button
-#myButton = Button(root, text = "click me", state = DISABLED)
-#myButton2 = Button(root, text = "I padded this!", padx = 12, pady = 7, command = ButtonPress) #Keep in mind no () on funt
-myButton3 = Button(root, text = "Enter Name", command = ButtonPress)
-button_quit = Button(root, text = "Exit", command = root.destroy)
+myLabel = Label(root, text = "|_|")
+myButton3 = Button(root, text = "Make Rectangle", command = ButtonPress)
 
 #display on screen
-#myLabel.pack()
-myLabel.grid(row = 0, column = 0)
-#gridLabel.grid(row = 2, column = 1)
-#testLabel.grid(row = 0, column = 2)
-#myButton.grid(row = 0, column = 5)
-#myButton2.grid(row = 7, column = 7)
-myButton3.grid(row = 1, column = 0)
-entry.grid(row = 2, column = 0)
-button_quit.grid(row = 3, column = 0)
-
-
-top = Toplevel()
-lbl = Label(top, text = "Hello World")
-lbl.pack()
+myButton3.grid(row = 2, column = 0, columnspan = 2)
+entry.grid(row = 1, column = 0)
+entry2.grid(row = 1, column = 1)
 
 #loop until program ends
 root.mainloop()
