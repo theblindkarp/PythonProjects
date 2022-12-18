@@ -1,0 +1,26 @@
+# My Algorithm
+# Set variables
+# Number of combinations
+# Total amount in the Main Canister
+# Number of Canisters
+# Fill Max of Main Canister
+# Set Functions
+# Combination Checker that takes the combination in sum format
+# and solves it as a sequence of numbers relying on a base (base = mainFillMax)
+    # Sequence
+    # Set values in the sequence all to 0 by default
+    # The combinations will be the mainFillMax(base) to the power of the canisterCount(amount)
+    # Keep of the changes
+    # But the total if put in a sequence will have the highest sum be 1 less because 0 is a possible combination
+    # Set the base to the mainFillMax
+    # Set the power to -1 of the canisterCount
+    # Loop powers
+        # Make a number that is at that digit of the sequence (1st(4^0), 2nd(4^1), 3rd(4^2))
+        # Inverse that number
+        # Loop multiplier (mainFillMax)
+            #Inverse the loop number (when multiplier = 0, then = mainFillMax + 1 : when multiplier = mainFillMax + 1, then = 0)
+            #Check if it fits:
+                #If yes then subtract it and move on to the next power below
+                #Then add that to the sequence list in the same spot as the power value
+            #If no then go to a lower multiplier
+    # Return list

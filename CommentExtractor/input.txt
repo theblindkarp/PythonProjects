@@ -1,0 +1,66 @@
+# My Algorithm
+
+
+
+# Set variables
+
+# Number of combinations
+combination = 0
+# Total amount in the Main Canister
+totalInMain = 0
+# Number of Canisters
+canisterCount = 2
+# Fill Max of Main Canister
+mainFillMax = 4
+
+# Set Functions
+
+# Combination Checker that takes the combination in sum format
+# and solves it as a sequence of numbers relying on a base (base = mainFillMax)
+def combinationChecker():
+
+    # Sequence
+    sequence = []
+    # Set values in the sequence all to 0 by default
+    for i in range(canisterCount):
+        sequence.append(0)
+
+
+    # The combinations will be the mainFillMax(base) to the power of the canisterCount(amount)
+    ConventionalCombination = 0
+    # Keep of the changes
+    ConvComb = ConventionalCombination
+
+    # But the total if put in a sequence will have the highest sum be 1 less because 0 is a possible combination
+
+    # Set the base to the mainFillMax
+    # Set the power to -1 of the canisterCount
+
+    # Loop powers
+    for powers in range(canisterCount):
+        # Make a number that is at that digit of the sequence (1st(4^0), 2nd(4^1), 3rd(4^2))
+        # Inverse that number
+        powersInv = ((canisterCount - 1) - powers)
+        digit = mainFillMax**powersInv
+
+        # Loop multiplier (mainFillMax)
+        for multiplier in range(mainFillMax + 1):
+            #Inverse the loop number (when multiplier = 0, then = mainFillMax + 1 : when multiplier = mainFillMax + 1, then = 0)
+            loopNum = (mainFillMax - multiplier)
+            #Check if it fits:
+            fitNum = (digit * multiplier)
+            if fitNum <= ConvComb:
+                #If yes then subtract it and move on to the next power below
+                ConvComb -= fitNum
+                #Then add that to the sequence list in the same spot as the power value
+                sequence[powersInv] = fitNum
+
+            #If no then go to a lower multiplier
+
+    # Return list
+    for i in range(len(sequence)):
+        print(sequence[i])
+
+
+
+combinationChecker()
