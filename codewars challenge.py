@@ -21,11 +21,15 @@ def subtract_sum(n):
         for i in range(len(nList)):
             nList[i] = int(nList[i])
     #add all items in the list
-        for int in nList:
-            sum += int
+        sumN = 0
+        for integer in nList:
+            sumN += integer
     #subtract the sum from n
-        fruitID = n - sum
+        fruitID = n - sumN
     #use as index in list
         output = fruitID
         keepGoing = False
     return output #fruit name like "apple"
+
+n = 20
+subtract_sum(n)
