@@ -81,32 +81,36 @@ def SetupMode(categoryList):
         
     return categoryList
 
-def BudgetInput(categoryList, log):
-    i = 0
-    keepGoing = True
-    while keepGoing:
-        i += 1
+def BudgetInput(categoryList, category, spent, log):
+    #i = 0
+    #keepGoing = True
+    #while keepGoing:
+        #i += 1
         #print all categories
-        PrintCategories(categoryList)
+        #PrintCategories(categoryList)
 
         #input: category and price
-        userInput = input("\nPlease input category number, and then the expensditure like so; <number> <expense>: ")
-        userInput = userInput.split(" ")
-        (category, spent) = userInput
-        (category, spent) = (int(category), int(spent))
+        #userInput = input("\nPlease input category number, and then the expensditure like so; <number> <expense>: ")
+        #userInput = userInput.split(" ")
+    for item in categoryList:
+        if item[0] == category:
+            categoryID = categoryList.index(item)
+    spent = float(spent)
+    spent = round(spent, 2)
 
             #add category spent + new price
-        categoryList[category][2] += spent
+    categoryList[categoryID][2] += spent
+    categoryList[categoryID][2] = round(categoryList[categoryID][2], 2)
 
             #add to list of log files
-        log.append(userInput)
+    log.append((category, spent))
 
             #exit loop
-        stay = input("Press E to exit, Press S to add another expense: ")
-        if stay == "E":
-            keepGoing = False
+        #stay = input("Press E to exit, Press S to add another expense: ")
+        #if stay == "E":
+            #keepGoing = False
 
-    return [categoryList, log]
+    return categoryList, log
 
 def SaveAndExit(categoryList, log):
     #save to category file
@@ -115,21 +119,22 @@ def SaveAndExit(categoryList, log):
     #save to log file w/date
     SaveLog(log)
 
-#Start
-log = []
+if __name__ == "__main__":
+    #Start
+    log = []
 
-#Setup mode
-categoryList = list(SetupMode(GetCategoryList()))
+    #Setup mode
+    categoryList = list(SetupMode(GetCategoryList()))
 
-#when not in setup mode
-info = [categoryList, log]
-[categoryList, log] = BudgetInput(categoryList, log)
+    #when not in setup mode
+    info = [categoryList, log]
+    [categoryList, log] = BudgetInput(categoryList, log)
 
-#end program
-SaveAndExit(info[0], info[1])
+    #end program
+    SaveAndExit(info[0], info[1])
 
 ##pull spenditures from texts
 ##auto run program
 ##send emails about over under budgets
 ##email.sms
-##floats
+##scrollbar for long lists
